@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "name": "sl-projects/laravel-request-logger",
+  "description": "A Laravel package to log all incoming HTTP requests",
+  "type": "library",
+  "authors": [
+    {
+      "role": "Developer",
+      "name": "Sofiane Lasri",
+      "email": "sofianelasri@sl-projects.com",
+      "homepage": "https://sofianelasri.fr"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "laravel/framework": "^11.9"
+  },
+  "require-dev": {
+    "fakerphp/faker": "^1.23"
+  },
+  "autoload": {
+    "psr-4": {
+      "SlProjects\\LaravelRequestLogger\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SlProjects\\LaravelRequestLogger\\app\\Providers\\LaravelRequestLogger"
+      ]
+    }
+  }
+}
