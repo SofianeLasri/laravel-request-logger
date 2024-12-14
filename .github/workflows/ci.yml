@@ -36,9 +36,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up GitHub CLI
-        uses: actions/gh-cli@v2
-
       - name: Create Release
         uses: softprops/action-gh-release@v2
         env:
