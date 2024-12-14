@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0",
   "name": "sl-projects/laravel-request-logger",
   "description": "A Laravel package to log all incoming HTTP requests",
   "type": "library",
+  "license": "MIT",
   "authors": [
     {
       "role": "Developer",
