@@ -19,7 +19,7 @@ class Url extends Model
     public static function getIdFromCacheOrCreate(string $url): int
     {
         $urlHash = md5($url);
-        $cacheKey = "url_id_{$urlHash}";
+        $cacheKey = config('request-logger.models_cache_keys.url') . $urlHash;
         $urlId = Cache::has($cacheKey) ? Cache::get($cacheKey) : null;
 
         if ($urlId === null) {

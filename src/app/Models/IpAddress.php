@@ -38,7 +38,7 @@ class IpAddress extends Model
     public static function getIdFromCacheOrCreate(string $ip): int
     {
         $ipHash = md5($ip);
-        $cacheKey = "ip_address_id_{$ipHash}";
+        $cacheKey = config('request-logger.models_cache_keys.ip_address') . $ipHash;
         $ipAddressId = Cache::has($cacheKey) ? Cache::get($cacheKey) : null;
 
         if ($ipAddressId === null) {

@@ -3,6 +3,7 @@
 namespace SlProjects\LaravelRequestLogger\app\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Cache\LockTimeoutException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
@@ -16,7 +17,8 @@ class SaveRequestMiddleware
 
     public function terminate(Request $request, $response): void
     {
-        $cacheKey = "requests";
+        $cacheKey = config('request-logger.cache_key');
+        $ttl = config('request-logger.cache_ttl');
 
         $serializedRequest = [
             'ip' => $request->ip(),
@@ -33,12 +35,14 @@ class SaveRequestMiddleware
             'created_at' => now(),
         ];
 
-        $ttl = 3600;
-
-        Cache::lock('request_cache_lock', 10)->block(5, function () use ($cacheKey, $serializedRequest, $ttl) {
-            $requests = Cache::get($cacheKey, []);
-            $requests[] = $serializedRequest;
-            Cache::put($cacheKey, $requests, $ttl);
-        });
+        try {
+            Cache::lock('request_cache_lock', 10)->block(5, function () use ($cacheKey, $serializedRequest, $ttl) {
+                $requests = Cache::get($cacheKey, []);
+                $requests[] = $serializedRequest;
+                Cache::put($cacheKey, $requests, $ttl);
+            });
+        } catch (LockTimeoutException $error) {
+            report($error);
+        }
     }
 }

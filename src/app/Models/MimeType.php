@@ -19,7 +19,7 @@ class MimeType extends Model
     public static function getIdFromCacheOrCreate(string $mimeType): int
     {
         $mimeTypeHash = md5($mimeType);
-        $cacheKey = "mime_type_id_{$mimeTypeHash}";
+        $cacheKey = config('request-logger.models_cache_keys.mime_type') . $mimeTypeHash;
         $mimeTypeId = Cache::has($cacheKey) ? Cache::get($cacheKey) : null;
 
         if ($mimeTypeId === null) {

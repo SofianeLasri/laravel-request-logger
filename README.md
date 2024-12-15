@@ -69,6 +69,12 @@ After installing, the package will automatically register its service provider.
     Schedule::command('save:requests')->everyMinute();
     ```
 
+4. **Configuration** (optional): Publish the configuration file to customize the package settings.
+
+    ```bash
+    php artisan vendor:publish --tag=request-logger-config
+    ```
+
 ## Usage
 
 ### Logging Requests
