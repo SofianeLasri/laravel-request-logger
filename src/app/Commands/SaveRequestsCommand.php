@@ -14,10 +14,11 @@ class SaveRequestsCommand extends Command
 
     public function handle(): void
     {
-        $requests = Cache::get('requests', []);
+        $cacheKey = config('request-logger.cache_key');
+        $requests = Cache::get($cacheKey, []);
         if (!empty($requests)) {
             $this->info('Saving ' . count($requests) . ' requests');
-            Cache::forget('requests');
+            Cache::forget($cacheKey);
             SaveRequestsJob::dispatch($requests);
         }
     }

@@ -21,7 +21,7 @@ class UserAgent extends Model
     {
         $userAgent = Str::before($userAgent, ';');
         $userAgentHash = md5($userAgent);
-        $cacheKey = "user_agent_id_{$userAgentHash}";
+        $cacheKey = config('request-logger.models_cache_keys.user_agent') . $userAgentHash;
         $userAgentId = Cache::has($cacheKey) ? Cache::get($cacheKey) : null;
 
         if ($userAgentId === null) {
