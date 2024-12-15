@@ -17,7 +17,7 @@ class SaveRequestMiddlewareTest extends TestCase
     public function test_it_stores_request_in_cache()
     {
         $response = $this->get('/', [
-            'CF-IPCountry' => 'US',
+            'Accept-Language' => 'en-US,en;q=0.9',
             'User-Agent' => 'TestAgent',
             'referer' => 'http://example.com',
             'origin' => 'http://origin.com',
@@ -32,7 +32,7 @@ class SaveRequestMiddlewareTest extends TestCase
 
         $storedRequest = $requests[0];
         $this->assertEquals('127.0.0.1', $storedRequest['ip']);
-        $this->assertEquals('US', $storedRequest['country_code']);
+        $this->assertEquals('en_US', $storedRequest['country_code']);
         $this->assertEquals('http://localhost', $storedRequest['url']);
         $this->assertEquals('GET', $storedRequest['method']);
         $this->assertEquals('TestAgent', $storedRequest['user_agent']);

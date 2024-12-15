@@ -20,7 +20,7 @@ class SaveRequestMiddleware
 
         $serializedRequest = [
             'ip' => $request->ip(),
-            'country_code' => $request->header('CF-IPCountry'),
+            'country_code' => $request->getPreferredLanguage(),
             'url' => Str::endsWith($request->fullUrl(), '/') ? substr($request->fullUrl(), 0, -1) : $request->fullUrl(),
             'method' => $request->method(),
             'user_agent' => $request->header('User-Agent'),
