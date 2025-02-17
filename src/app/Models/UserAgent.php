@@ -19,7 +19,6 @@ class UserAgent extends Model
 
     public static function getIdFromCacheOrCreate(string $userAgent): int
     {
-        $userAgent = Str::before($userAgent, ';');
         $userAgentHash = md5($userAgent);
         $cacheKey = config('request-logger.models_cache_keys.user_agent') . $userAgentHash;
         $userAgentId = Cache::has($cacheKey) ? Cache::get($cacheKey) : null;
