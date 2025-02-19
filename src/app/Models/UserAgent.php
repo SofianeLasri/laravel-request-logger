@@ -10,6 +10,8 @@ use SlProjects\LaravelRequestLogger\database\factories\UserAgentFactory;
 
 class UserAgent extends Model
 {
+    use HasFactory;
+
     public $timestamps = false;
 
     protected $fillable = [

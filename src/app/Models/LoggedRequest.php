@@ -9,6 +9,8 @@ use SlProjects\LaravelRequestLogger\database\factories\LoggedRequestFactory;
 
 class LoggedRequest extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'ip_address_id',
         'country_code',

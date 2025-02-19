@@ -9,6 +9,8 @@ use SlProjects\LaravelRequestLogger\database\factories\MimeTypeFactory;
 
 class MimeType extends Model
 {
+    use HasFactory;
+
     public $timestamps = false;
 
     protected $fillable = [

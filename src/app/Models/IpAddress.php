@@ -10,6 +10,8 @@ use SlProjects\LaravelRequestLogger\database\Factories\IpAddressFactory;
 
 class IpAddress extends Model
 {
+    use HasFactory;
+
     public $timestamps = false;
 
     protected $fillable = [
