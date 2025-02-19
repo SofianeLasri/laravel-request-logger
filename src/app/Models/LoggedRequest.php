@@ -5,6 +5,7 @@ namespace SlProjects\LaravelRequestLogger\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use SlProjects\LaravelRequestLogger\Database\Factories\LoggedRequestFactory;
 
 class LoggedRequest extends Model
 {
@@ -51,5 +52,10 @@ class LoggedRequest extends Model
     public function originUrl(): BelongsTo
     {
         return $this->belongsTo(Url::class, 'origin_url_id');
+    }
+
+    protected static function newFactory(): LoggedRequestFactory
+    {
+        return LoggedRequestFactory::new();
     }
 }
