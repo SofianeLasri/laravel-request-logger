@@ -1,17 +1,18 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Console\Command;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Queue;
-use Orchestra\Testbench\Attributes\WithMigration;
 use Orchestra\Testbench\Concerns\WithWorkbench;
-use Orchestra\Testbench\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use SlProjects\LaravelRequestLogger\app\Commands\SaveRequestsCommand;
 use SlProjects\LaravelRequestLogger\app\Jobs\SaveRequestsJob;
+use Tests\TestCase;
 
-#[WithMigration]
+#[CoversClass(SaveRequestsCommand::class)]
 class SaveRequestsCommandTest extends TestCase
 {
     use RefreshDatabase, WithWorkbench;
@@ -34,10 +35,9 @@ class SaveRequestsCommandTest extends TestCase
             ],
         ];
 
-        Cache::put('requests', $requests);
-
         Queue::fake();
 
+        Cache::put('requests', $requests);
         Artisan::call('save:requests');
 
         Queue::assertPushed(SaveRequestsJob::class, function ($job) use ($requests) {

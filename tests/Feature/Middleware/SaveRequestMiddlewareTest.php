@@ -1,15 +1,15 @@
 <?php
 
-namespace SlProjects\LaravelLib\Tests\Feature;
+namespace Tests\Feature\Middleware;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
-use Orchestra\Testbench\Attributes\WithMigration;
 use Orchestra\Testbench\Concerns\WithWorkbench;
-use Orchestra\Testbench\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use SlProjects\LaravelRequestLogger\app\Http\Middleware\SaveRequestMiddleware;
+use Tests\TestCase;
 
-#[WithMigration]
+#[CoversClass(SaveRequestMiddleware::class)]
 class SaveRequestMiddlewareTest extends TestCase
 {
     use RefreshDatabase, WithWorkbench;
