@@ -5,7 +5,7 @@ namespace SlProjects\LaravelRequestLogger\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use SlProjects\LaravelRequestLogger\database\factories\LoggedRequestFactory;
+use SlProjects\LaravelRequestLogger\Database\Factories\LoggedRequestFactory;
 
 class LoggedRequest extends Model
 {

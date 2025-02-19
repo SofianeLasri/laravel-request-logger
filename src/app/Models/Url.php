@@ -5,7 +5,7 @@ namespace SlProjects\LaravelRequestLogger\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
-use SlProjects\LaravelRequestLogger\database\factories\UrlFactory;
+use SlProjects\LaravelRequestLogger\Database\Factories\UrlFactory;
 
 class Url extends Model
 {

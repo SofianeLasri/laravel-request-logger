@@ -5,8 +5,7 @@ namespace SlProjects\LaravelRequestLogger\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Str;
-use SlProjects\LaravelRequestLogger\database\factories\UserAgentFactory;
+use SlProjects\LaravelRequestLogger\Database\Factories\UserAgentFactory;
 
 class UserAgent extends Model
 {
