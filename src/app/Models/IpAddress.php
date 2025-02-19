@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
+use SlProjects\LaravelRequestLogger\database\Factories\IpAddressFactory;
 
 class IpAddress extends Model
 {
-    use HasFactory;
-
     public $timestamps = false;
 
     protected $fillable = [
@@ -48,5 +47,10 @@ class IpAddress extends Model
         }
 
         return $ipAddressId;
+    }
+
+    protected static function newFactory(): IpAddressFactory
+    {
+        return IpAddressFactory::new();
     }
 }

@@ -10,7 +10,7 @@ use SlProjects\LaravelRequestLogger\app\Models\LoggedRequest;
 use SlProjects\LaravelRequestLogger\app\Models\Url;
 use SlProjects\LaravelRequestLogger\app\Models\UserAgent;
 
-class RequestFactory extends Factory
+class LoggedRequestFactory extends Factory
 {
     protected $model = LoggedRequest::class;
 

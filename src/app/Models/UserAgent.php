@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
+use SlProjects\LaravelRequestLogger\database\factories\UserAgentFactory;
 
 class UserAgent extends Model
 {
-    use HasFactory;
-
     public $timestamps = false;
 
     protected $fillable = [
@@ -30,5 +29,10 @@ class UserAgent extends Model
         }
 
         return $userAgentId;
+    }
+
+    protected static function newFactory(): UserAgentFactory
+    {
+        return UserAgentFactory::new();
     }
 }

@@ -5,11 +5,10 @@ namespace SlProjects\LaravelRequestLogger\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use SlProjects\LaravelRequestLogger\database\factories\LoggedRequestFactory;
 
 class LoggedRequest extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'ip_address_id',
         'country_code',
@@ -51,5 +50,10 @@ class LoggedRequest extends Model
     public function originUrl(): BelongsTo
     {
         return $this->belongsTo(Url::class, 'origin_url_id');
+    }
+
+    protected static function newFactory(): LoggedRequestFactory
+    {
+        return LoggedRequestFactory::new();
     }
 }

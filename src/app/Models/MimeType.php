@@ -5,11 +5,10 @@ namespace SlProjects\LaravelRequestLogger\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use SlProjects\LaravelRequestLogger\database\factories\MimeTypeFactory;
 
 class MimeType extends Model
 {
-    use HasFactory;
-
     public $timestamps = false;
 
     protected $fillable = [
@@ -29,5 +28,10 @@ class MimeType extends Model
         }
 
         return $mimeTypeId;
+    }
+
+    protected static function newFactory(): MimeTypeFactory
+    {
+        return MimeTypeFactory::new();
     }
 }
