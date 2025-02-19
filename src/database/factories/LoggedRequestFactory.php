@@ -1,6 +1,6 @@
 <?php
 
-namespace SlProjects\LaravelRequestLogger\database\factories;
+namespace SlProjects\LaravelRequestLogger\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
