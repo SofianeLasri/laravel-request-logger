@@ -5,7 +5,7 @@ namespace SlProjects\LaravelRequestLogger\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Str;
+use SlProjects\LaravelRequestLogger\Database\Factories\UserAgentFactory;
 
 class UserAgent extends Model
 {
@@ -30,5 +30,10 @@ class UserAgent extends Model
         }
 
         return $userAgentId;
+    }
+
+    protected static function newFactory(): UserAgentFactory
+    {
+        return UserAgentFactory::new();
     }
 }

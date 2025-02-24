@@ -1,6 +1,6 @@
 <?php
 
-namespace SlProjects\LaravelRequestLogger\database\factories;
+namespace SlProjects\LaravelRequestLogger\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use SlProjects\LaravelRequestLogger\app\Models\MimeType;

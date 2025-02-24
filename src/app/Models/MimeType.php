@@ -5,6 +5,7 @@ namespace SlProjects\LaravelRequestLogger\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use SlProjects\LaravelRequestLogger\Database\Factories\MimeTypeFactory;
 
 class MimeType extends Model
 {
@@ -29,5 +30,10 @@ class MimeType extends Model
         }
 
         return $mimeTypeId;
+    }
+
+    protected static function newFactory(): MimeTypeFactory
+    {
+        return MimeTypeFactory::new();
     }
 }

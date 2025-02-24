@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
+use SlProjects\LaravelRequestLogger\Database\Factories\IpAddressFactory;
 
 class IpAddress extends Model
 {
@@ -48,5 +49,10 @@ class IpAddress extends Model
         }
 
         return $ipAddressId;
+    }
+
+    protected static function newFactory(): IpAddressFactory
+    {
+        return IpAddressFactory::new();
     }
 }

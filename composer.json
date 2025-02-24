@@ -21,7 +21,8 @@
   },
   "autoload": {
     "psr-4": {
-      "SlProjects\\LaravelRequestLogger\\": "src/"
+      "SlProjects\\LaravelRequestLogger\\": "src/",
+      "SlProjects\\LaravelRequestLogger\\Database\\Factories\\": "src/database/factories/"
     }
   },
   "extra": {
@@ -35,7 +36,8 @@
     "psr-4": {
       "Workbench\\App\\": "workbench/app/",
       "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-      "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+      "Workbench\\Database\\Seeders\\": "workbench/database/seeders/",
+      "Tests\\": "tests/"
     }
   },
   "scripts": {
