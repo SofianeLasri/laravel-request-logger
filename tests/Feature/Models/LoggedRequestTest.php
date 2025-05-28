@@ -19,6 +19,25 @@ class LoggedRequestTest extends TestCase
     use RefreshDatabase, WithWorkbench;
 
     #[Test]
+    public function testCreateInstance(): void
+    {
+        $loggedRequest = LoggedRequest::factory()->create();
+
+        $this->assertDatabaseHas('logged_requests', [
+            'id' => $loggedRequest->id,
+            'ip_address_id' => $loggedRequest->ip_address_id,
+            'country_code' => $loggedRequest->country_code,
+            'method' => $loggedRequest->method,
+            'content_length' => $loggedRequest->content_length,
+            'status_code' => $loggedRequest->status_code,
+            'user_agent_id' => $loggedRequest->user_agent_id,
+            'mime_type_id' => $loggedRequest->mime_type_id,
+            'url_id' => $loggedRequest->url_id,
+            'referer_url_id' => $loggedRequest->referer_url_id,
+            'origin_url_id' => $loggedRequest->origin_url_id,
+        ]);
+    }
+    #[Test]
     public function testCreateInstanceWithAllRelations():void
     {
         $ipAddress = IpAddress::factory()->create();
