@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use SlProjects\LaravelRequestLogger\Database\Factories\UserAgentFactory;
 
+/**
+ * @property int $id
+ * @property string $user_agent
+ */
 class UserAgent extends Model
 {
+    /** @use HasFactory<UserAgentFactory> */
     use HasFactory;
 
     public $timestamps = false;
@@ -17,7 +22,7 @@ class UserAgent extends Model
         'user_agent',
     ];
 
-    public static function getIdFromCacheOrCreate(string $userAgent): int
+    public static function getIdOrCreate(string $userAgent): int
     {
         $userAgentHash = md5($userAgent);
         $cacheKey = config('request-logger.models_cache_keys.user_agent') . $userAgentHash;

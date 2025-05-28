@@ -8,8 +8,13 @@ use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
 use SlProjects\LaravelRequestLogger\Database\Factories\IpAddressFactory;
 
+/**
+ * @property int $id
+ * @property string $ip
+ */
 class IpAddress extends Model
 {
+    /** @use HasFactory<IpAddressFactory> */
     use HasFactory;
 
     public $timestamps = false;
@@ -27,7 +32,7 @@ class IpAddress extends Model
         return filter_var($ip, FILTER_VALIDATE_IP) !== false;
     }
 
-    public function setIpAttribute($value)
+    public function setIpAttribute(string $value): void
     {
         if (!self::validateIp($value)) {
             throw new InvalidArgumentException('Invalid IP address');
@@ -35,8 +40,13 @@ class IpAddress extends Model
         $this->attributes['ip'] = $value;
     }
 
-
-    public static function getIdFromCacheOrCreate(string $ip): int
+    /**
+     * Retrieves the IP address ID or creates a new record if it doesn't exist.
+     *
+     * @param string $ip The IP address to retrieve or create.
+     * @return int The ID of the IP address.
+     */
+    public static function getIdOrCreate(string $ip): int
     {
         $ipHash = md5($ip);
         $cacheKey = config('request-logger.models_cache_keys.ip_address') . $ipHash;

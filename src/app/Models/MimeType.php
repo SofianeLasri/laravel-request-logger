@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use SlProjects\LaravelRequestLogger\Database\Factories\MimeTypeFactory;
 
+/**
+ * @property int $id
+ * @property string $mime_type
+ */
 class MimeType extends Model
 {
+    /** @use HasFactory<MimeTypeFactory> */
     use HasFactory;
 
     public $timestamps = false;
@@ -17,7 +22,7 @@ class MimeType extends Model
         'mime_type',
     ];
 
-    public static function getIdFromCacheOrCreate(string $mimeType): int
+    public static function getIdOrCreate(string $mimeType): int
     {
         $mimeTypeHash = md5($mimeType);
         $cacheKey = config('request-logger.models_cache_keys.mime_type') . $mimeTypeHash;
