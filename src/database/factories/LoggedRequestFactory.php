@@ -9,6 +9,7 @@ use SlProjects\LaravelRequestLogger\app\Models\MimeType;
 use SlProjects\LaravelRequestLogger\app\Models\LoggedRequest;
 use SlProjects\LaravelRequestLogger\app\Models\Url;
 use SlProjects\LaravelRequestLogger\app\Models\UserAgent;
+use SlProjects\LaravelRequestLogger\Enums\HttpMethod;
 
 class LoggedRequestFactory extends Factory
 {
@@ -18,7 +19,7 @@ class LoggedRequestFactory extends Factory
     {
         return [
             'country_code' => $this->faker->optional()->numberBetween(1, 999),
-            'method' => $this->faker->randomElement(['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'CONNECT', 'HEAD', 'OPTIONS', 'TRACE']),
+            'method' => $this->faker->randomElement(HttpMethod::cases()),
             'content_length' => $this->faker->optional()->numberBetween(0, 10000),
             'status_code' => $this->faker->optional()->numberBetween(100, 599),
             'created_at' => Carbon::now(),
