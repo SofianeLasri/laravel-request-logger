@@ -22,7 +22,7 @@ class MimeType extends Model
         'mime_type',
     ];
 
-    public static function getIdFromCacheOrCreate(string $mimeType): int
+    public static function getIdOrCreate(string $mimeType): int
     {
         $mimeTypeHash = md5($mimeType);
         $cacheKey = config('request-logger.models_cache_keys.mime_type') . $mimeTypeHash;

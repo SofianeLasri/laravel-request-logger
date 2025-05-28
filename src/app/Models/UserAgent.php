@@ -22,7 +22,7 @@ class UserAgent extends Model
         'user_agent',
     ];
 
-    public static function getIdFromCacheOrCreate(string $userAgent): int
+    public static function getIdOrCreate(string $userAgent): int
     {
         $userAgentHash = md5($userAgent);
         $cacheKey = config('request-logger.models_cache_keys.user_agent') . $userAgentHash;

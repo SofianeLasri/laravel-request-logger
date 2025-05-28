@@ -22,7 +22,7 @@ class Url extends Model
         'url',
     ];
 
-    public static function getIdFromCacheOrCreate(string $url): int
+    public static function getIdOrCreate(string $url): int
     {
         $urlHash = md5($url);
         $cacheKey = config('request-logger.models_cache_keys.url') . $urlHash;
