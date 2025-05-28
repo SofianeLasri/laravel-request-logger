@@ -9,6 +9,7 @@ use SlProjects\LaravelRequestLogger\Database\Factories\MimeTypeFactory;
 
 class MimeType extends Model
 {
+    /** @use HasFactory<MimeTypeFactory> */
     use HasFactory;
 
     public $timestamps = false;

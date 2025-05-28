@@ -10,6 +10,7 @@ use SlProjects\LaravelRequestLogger\Database\Factories\IpAddressFactory;
 
 class IpAddress extends Model
 {
+    /** @use HasFactory<IpAddressFactory> */
     use HasFactory;
 
     public $timestamps = false;
@@ -27,7 +28,7 @@ class IpAddress extends Model
         return filter_var($ip, FILTER_VALIDATE_IP) !== false;
     }
 
-    public function setIpAttribute($value)
+    public function setIpAttribute(string $value): void
     {
         if (!self::validateIp($value)) {
             throw new InvalidArgumentException('Invalid IP address');

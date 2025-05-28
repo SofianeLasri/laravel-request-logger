@@ -2,6 +2,7 @@
 
 namespace SlProjects\LaravelRequestLogger\app\Jobs;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -17,8 +18,12 @@ class SaveRequestsJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    /** @var array{'ip': string, 'country_code': string, 'url': string, 'method': string, 'user_agent': ?string, 'referer': ?string, 'origin': ?string, 'content_type': ?string, 'content_length': ?int, 'status_code': ?int, 'user_id': ?int, 'created_at': Carbon}[] */
     public array $requests;
 
+    /**
+     * @param array{'ip': string, 'country_code': string, 'url': string, 'method': string, 'user_agent': ?string, 'referer': ?string, 'origin': ?string, 'content_type': ?string, 'content_length': ?int, 'status_code': ?int, 'user_id': ?int, 'created_at': Carbon}[] $requests
+     */
     public function __construct(array $requests)
     {
         $this->requests = $requests;

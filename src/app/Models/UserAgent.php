@@ -9,6 +9,7 @@ use SlProjects\LaravelRequestLogger\Database\Factories\UserAgentFactory;
 
 class UserAgent extends Model
 {
+    /** @use HasFactory<UserAgentFactory> */
     use HasFactory;
 
     public $timestamps = false;

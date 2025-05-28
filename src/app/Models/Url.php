@@ -9,6 +9,7 @@ use SlProjects\LaravelRequestLogger\Database\Factories\UrlFactory;
 
 class Url extends Model
 {
+    /** @use HasFactory<UrlFactory> */
     use HasFactory;
 
     public $timestamps = false;
