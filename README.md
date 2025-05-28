@@ -2,6 +2,7 @@
 
 [![Latest Version](https://img.shields.io/github/v/release/SofianeLasri/laravel-request-logger)](https://github.com/SofianeLasri/laravel-request-logger/releases)
 [![License](https://img.shields.io/github/license/SofianeLasri/laravel-request-logger)](LICENSE)
+[![codecov](https://codecov.io/gh/SofianeLasri/laravel-request-logger/graph/badge.svg?token=Y2BKM3ZMFV)](https://codecov.io/gh/SofianeLasri/laravel-request-logger)
 
 Laravel Request Logger is a package designed to log all incoming HTTP requests in a Laravel application. It provides
 middleware to capture request details and store them efficiently using caching and database storage.
