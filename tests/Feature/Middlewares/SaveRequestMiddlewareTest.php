@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Middleware;
+namespace Tests\Feature\Middlewares;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
