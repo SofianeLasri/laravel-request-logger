@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use SlProjects\LaravelRequestLogger\Database\Factories\UserAgentFactory;
 
+/**
+ * @property int $id
+ * @property string $user_agent
+ */
 class UserAgent extends Model
 {
     /** @use HasFactory<UserAgentFactory> */

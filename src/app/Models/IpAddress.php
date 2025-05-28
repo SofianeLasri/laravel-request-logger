@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
 use SlProjects\LaravelRequestLogger\Database\Factories\IpAddressFactory;
 
+/**
+ * @property int $id
+ * @property string $ip
+ */
 class IpAddress extends Model
 {
     /** @use HasFactory<IpAddressFactory> */

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use SlProjects\LaravelRequestLogger\Database\Factories\UrlFactory;
 
+/**
+ * @property int $id
+ * @property string $url
+ */
 class Url extends Model
 {
     /** @use HasFactory<UrlFactory> */

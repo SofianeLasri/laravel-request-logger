@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use SlProjects\LaravelRequestLogger\Database\Factories\MimeTypeFactory;
 
+/**
+ * @property int $id
+ * @property string $mime_type
+ */
 class MimeType extends Model
 {
     /** @use HasFactory<MimeTypeFactory> */
