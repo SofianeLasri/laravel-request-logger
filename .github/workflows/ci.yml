@@ -21,13 +21,22 @@ jobs:
         with:
           php-version: '8.2'
           extensions: mbstring, intl, pdo, sqlite3
-          coverage: none
+          coverage: xdebug
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Run tests
-        run: composer run test
+      - name: Run tests with coverage
+        run: composer run test -- --coverage-clover coverage.xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')

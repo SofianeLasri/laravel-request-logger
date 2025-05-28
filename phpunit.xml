@@ -11,9 +11,14 @@
     </testsuites>
     <source>
         <include>
-            <directory>app</directory>
+            <directory>src</directory>
         </include>
     </source>
+    <coverage>
+        <report>
+            <clover outputFile="coverage.xml"/>
+        </report>
+    </coverage>
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
