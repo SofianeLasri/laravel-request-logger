@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use SlProjects\LaravelRequestLogger\app\Http\Middleware\SaveRequestMiddleware;
 use Tests\TestCase;
 
@@ -14,6 +15,7 @@ class SaveRequestMiddlewareTest extends TestCase
 {
     use RefreshDatabase, WithWorkbench;
 
+    #[Test]
     public function test_it_stores_request_in_cache()
     {
         $response = $this->get('/', [
