@@ -35,7 +35,7 @@ class SaveRequestsJob implements ShouldQueue
 
         foreach ($this->requests as $request) {
             $requestsToInsert[] = [
-                'ip_address_id' => IpAddress::getIdFromCacheOrCreate($request['ip']),
+                'ip_address_id' => IpAddress::getIdOrCreate($request['ip']),
                 'country_code' => $request['country_code'],
                 'url_id' => Url::getIdFromCacheOrCreate($request['url']),
                 'method' => $request['method'],
