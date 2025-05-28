@@ -27,16 +27,13 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Run tests with coverage
-        run: composer run test -- --coverage-clover coverage.xml
+        run: vendor/bin/phpunit --coverage-clover coverage.xml .
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
         with:
-          file: ./coverage.xml
-          flags: unittests
-          name: codecov-umbrella
-          fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
+          slug: SofianeLasri/laravel-request-logger
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
