@@ -25,7 +25,25 @@ class MimeTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'mime_type' => $this->faker->randomElement($this->commonMimeTypes),
+            'mime_type' => $this->generateUniqueMimeType(),
         ];
+    }
+
+    private function generateUniqueMimeType(): string
+    {
+        $availableMimeTypes = array_diff($this->commonMimeTypes, MimeType::pluck('mime_type')->toArray());
+
+        if (!empty($availableMimeTypes)) {
+            return $this->faker->randomElement($availableMimeTypes);
+        }
+
+        $types = ['application', 'text', 'image', 'video', 'audio'];
+        $subtypes = ['json', 'xml', 'html', 'plain', 'jpeg', 'png', 'mp4', 'mpeg', 'custom'];
+
+        do {
+            $mimeType = $this->faker->randomElement($types) . '/' . $this->faker->randomElement($subtypes) . '-' . $this->faker->unique()->word();
+        } while (MimeType::where('mime_type', $mimeType)->exists());
+
+        return $mimeType;
     }
 }
